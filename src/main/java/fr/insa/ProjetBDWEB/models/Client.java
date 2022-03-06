@@ -1,0 +1,32 @@
+package fr.insa.ProjetBDWEB.models;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.*;
+
+import javax.persistence.*;
+import java.util.List;
+
+@Entity
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
+public class Client {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer idclient;
+    private String nom;
+    private String prenom;
+    private Integer age;
+    private String adresse;
+    private Integer numtel;
+    private String mail ;
+    @ManyToMany
+    @JsonIgnore
+    private List<Compte> comptes ;
+    @ManyToOne
+    @JsonIgnore
+    private Agence agence ;
+
+}
